@@ -1,0 +1,150 @@
+{
+  "type": "record",
+  "namespace": "com.example",
+  "name": "User",
+  "doc": "An example Avro schema for a registered user on our website.",
+  "fields": [
+    {
+      "name": "id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      },
+      "doc": "The unique ID of the user."
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "doc": "The username of the user."
+    },
+    {
+      "name": "password",
+      "type": {
+        "type": "fixed",
+        "size": 16,
+        "name": "md5"
+      },
+      "doc": "Hash of the user's password."
+    },
+    {
+      "name": "email",
+      "type": "string",
+      "doc": "The email address of the user."
+    },
+    {
+      "name": "address",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "Address",
+          "doc": "The user's address information.",
+          "fields": [
+            {
+              "name": "street",
+              "type": "string",
+              "doc": "The street address of the user's residence."
+            },
+            {
+              "name": "city",
+              "type": "string",
+              "doc": "The city of the user's residence."
+            },
+            {
+              "name": "state",
+              "type": "string",
+              "doc": "The state or province of the user's residence."
+            },
+            {
+              "name": "zip",
+              "type": "string",
+              "doc": "The postal code of the user's residence."
+            }
+          ]
+        }
+      ],
+      "default": null
+    },
+    {
+      "name": "phoneNumbers",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "A list of phone numbers for the user."
+    },
+    {
+      "name": "weekday",
+      "type": {
+        "type": "enum",
+        "name": "Weekday",
+        "symbols": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "doc": "The day of the week the user was registered on our website."
+      }
+    },
+    {
+      "name": "favouriteIceCreams",
+      "doc": "the user's favourite ice cream flavours",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "enum",
+          "name": "IceCreams",
+          "symbols": [
+            "Strawberry",
+            "Vanilla",
+            "Chocolate"
+          ]
+        }
+      }
+    },
+    {
+      "name": "bestFriend",
+      "type": "User",
+      "doc": "A self-referential field."
+    },
+    {
+      "name": "friends",
+      "type": {
+        "type": "array",
+        "items": "User"
+      },
+      "doc": "A self-referential array field."
+    },
+    {
+      "name": "birthday",
+      "doc": "The user's birthday (optional).",
+      "type": [
+        "null",
+        {
+          "type": "int",
+          "logicalType": "date"
+        }
+      ],
+      "default": null
+    },
+    {
+      "name": "favouriteNumber",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 4,
+        "scale": 2
+      }
+    },
+    {
+      "name": "otherID",
+      "type": "int",
+      "doc": "A really long docstring. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod augue in mollis eleifend. Etiam rhoncus massa id magna lacinia vel eu enim. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod augue in mollis eleifend. Etiam rhoncus massa id magna lacinia vel eu enim. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod augue in mollis eleifend. Etiam rhoncus massa id magna lacinia vel eu enim. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod augue in mollis eleifend. Etiam rhoncus massa id magna lacinia vel eu enim. Suspendisse potenti."
+
+    }
+  ]
+}

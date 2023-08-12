@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "avro-schema-doc-html"
+version = "0.1.0"
+description = "Generate Avro schema documentation HTML"
+authors = ["Ben Jeffrey <mail@benjeffrey.net>"]
+readme = "README.md"
+packages = [{include = "avro_schema_doc_html"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+avro = "^1.11.1"
+more-itertools = "^9.0.0"
+typing-extensions = "^4.5.0"
+dominate = "^2.8.0"
+pygraphviz = "^1.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+ignore = ["F403", "F405"]
+# Same as Black.
+line-length = 88
