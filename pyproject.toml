@@ -27,6 +27,9 @@ pygraphviz = "^1.11"
 [tool.poetry.scripts]
 avdoc = "avdoc.__main__:main"
 
+[tool.poetry.group.dev.dependencies]
+bump2version = "^1.0.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

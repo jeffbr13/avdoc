@@ -55,7 +55,11 @@ Use `.venv/bin/python` as your Python interpreter.
 
 ### Publishing
 
-[//]: # (TODO: bump2version)
+#### Bump version
+
+```shell
+bumpversion major|minor|patch
+```
 
 #### Update documentation
 Run `mdsh`.
