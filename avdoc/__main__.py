@@ -13,7 +13,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"""Produce HTML documentation for an Avro schema.
+"""CLI tool to generate HTML documentation for an Apache Avro schema
 """
 import argparse
 import json
