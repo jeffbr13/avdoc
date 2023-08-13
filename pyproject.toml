@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "avdoc"
-version = "0.1.1"
+version = "0.1.2"
 description = "CLI tool to generate HTML documentation for an Apache Avro schema"
 license = "AGPL-3.0-or-later"
 authors = ["Ben Jeffrey <mail@benjeffrey.net>"]
