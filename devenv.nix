@@ -3,7 +3,12 @@
   #  env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [pkgs.black pkgs.ruff pkgs.graphviz];
+  packages = [
+    pkgs.black
+    pkgs.ruff
+    pkgs.graphviz
+    pkgs.mdsh
+  ];
 
   # https://devenv.sh/scripts/
   #  scripts.hello.exec = "echo hello from $GREET";

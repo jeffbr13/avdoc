@@ -14,6 +14,7 @@ pip install --upgrade avdoc
 ```
 
 ## Usage
+
 ```shell
 python -m avdoc tests/example.avsc > out/example.html && open out/example.html
 ```
@@ -21,6 +22,23 @@ python -m avdoc tests/example.avsc > out/example.html && open out/example.html
 To provide a version ID, e.g. the current git commit:
 ```shell
 python -m avdoc --schema-version $(git rev-parse --short head) example.avsc > out/example.html
+```
+
+`$ avdoc --help`
+```
+usage: avdoc [-h] [--schema-title SCHEMA_TITLE]
+             [--schema-version SCHEMA_VERSION]
+             avsc
+
+Produce HTML documentation for an Avro schema.
+
+positional arguments:
+  avsc
+
+options:
+  -h, --help            show this help message and exit
+  --schema-title SCHEMA_TITLE
+  --schema-version SCHEMA_VERSION
 ```
 
 ### Requirements
@@ -36,6 +54,13 @@ Software required outside of Python package dependencies:
 Use `.venv/bin/python` as your Python interpreter.
 
 ### Publishing
+
+[//]: # (TODO: bump2version)
+
+#### Update documentation
+Run `mdsh`.
+
+#### Publish Python package to PyPI
 [Configure Poetry credentials] with [PyPI token] and run:
 ```shell
 poetry publish --build
@@ -88,7 +113,7 @@ then reach out to discuss pricing.
 which itself was intended as a replacement for [avrodoc],
 via a long line of forks.
 
-To run `avrodoc-plus` and see it's output:
+To run `avrodoc-plus` and see its output:
 
 ```shell
 npm install @mikaello/avrodoc-plus
