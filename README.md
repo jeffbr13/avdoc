@@ -7,6 +7,10 @@ Want Avro schema docs? 'avdoc!
 
 ## Installation
 
+### Requirements
+Software required outside of Python package dependencies:
+- [Graphviz] for the reference graph.
+
 ### Install as Python package
 Install the [`avdoc` package on PyPI]:
 ```shell
@@ -40,11 +44,6 @@ options:
   --schema-title SCHEMA_TITLE
   --schema-version SCHEMA_VERSION
 ```
-
-### Requirements
-
-Software required outside of Python package dependencies:
-- [Graphviz] for the reference graph.
 
 ## Development
 - [devenv] for development environment
