@@ -7,7 +7,11 @@ Want Avro schema docs? 'avdoc!
 
 ## Installation
 
-[//]: # (TODO)
+### Install as Python package
+Install the [`avdoc` package on PyPI]:
+```shell
+pip install --upgrade avdoc
+```
 
 ## Usage
 ```shell
@@ -31,8 +35,14 @@ Software required outside of Python package dependencies:
 `devenv shell` should set up Python & Poetry with dependencies installed.
 Use `.venv/bin/python` as your Python interpreter.
 
+### Publishing
+[Configure Poetry credentials] with [PyPI token] and run:
+```shell
+poetry publish --build
+```
+
 ### Architecture
-Not really. 
+Not much to speak of. 
 
 `avdoc` is a couple of hundred lines of Python script
 generating static HTML, with a bit of string munging to get component outputs
@@ -66,7 +76,7 @@ have access to your modifications.
 [AGPL]:
 > [[…] requires the operator of a network server to provide the source code of the modified version running there to the users of that server. Therefore, public use of a modified version, on a publicly accessible server, gives the public access to the source code of the modified version.](https://www.gnu.org/licenses/agpl-3.0.html#:~:text=It%20requires%20the%20operator%20of%20a%20network%20server)
 
-`avdoc` is copyleft.
+`avdoc` is released as copyleft software.
 If you modify `avdoc` then you must make changes available to your users.
 
 If the AGPL license is an issue, and you want to relicense `avdoc` privately, 
@@ -88,7 +98,7 @@ node_modules/@mikaello/avrodoc-plus/bin/avrodoc-plus.js example.avsc --output ou
 ## Why?
 
 Unfortunately the original [avrodoc] and forks are all
-in varying stages of [software rot], mostly due to NodeJS ecosystem churn. 
+in varying stages of [software decay], mostly due to NodeJS ecosystem churn. 
 Their NPM package dependencies include packages which have themselves 
 gone unmaintained or had breaking changes in following versions, 
 with CVEs piling up against the transitive dependencies.
@@ -108,7 +118,8 @@ See [§Design Goals](#design-goals) for more info.
 Why the name `avdoc` specifically?
 The [Apache Software Foundation protects project name trademarks]
 (quite rightly) and I wanted to avoid the [kcat naming issue].
-`avdoc` is "Powered by [Apache Avro]™" but not a part of Apache Avro™.
+
+`avdoc` is "Powered by Apache Avro™" but not a part of Apache Avro™.
 
 
 
@@ -120,7 +131,10 @@ The [Apache Software Foundation protects project name trademarks]
 [direnv]: https://direnv.net
 [devenv]: https://devenv.sh
 [Graphviz]: https://www.graphviz.org
-[software rot]: https://en.wikipedia.org/wiki/Software_rot
+[software decay]: https://en.wikipedia.org/wiki/Software_rot
 [SBOM]: https://en.wikipedia.org/wiki/Software_supply_chain
-[kcat naming issue]: https://github.com/edenhill/kcat
-[Apache Software Foundation protects project name trademarks]: https://github.com/edenhill/kcat#what-happened-to-kafkacat
+[kcat naming issue]: https://github.com/edenhill/kcat#what-happened-to-kafkacat
+[Apache Software Foundation protects project name trademarks]: https://www.apache.org/foundation/marks/faq/#products
+[Configure Poetry credentials]: https://python-poetry.org/docs/repositories/#configuring-credentials
+[PyPI token]: https://pypi.org/help/#apitoken
+[`avdoc` package on PyPI]: https://pypi.org/project/avdoc/
