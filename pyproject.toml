@@ -9,11 +9,12 @@ repository = "https://github.com/jeffbr13/avdoc"
 keywords = ["avro", "avro-schema"]
 classifiers = [
     "Development Status :: 3 - Alpha",
-    "Environment :: Console",
     "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
     "Operating System :: MacOS",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
     "Topic :: Software Development :: Documentation",
     "Topic :: Text Processing :: Markup :: HTML",
 ]
