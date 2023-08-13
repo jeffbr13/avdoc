@@ -1,19 +1,31 @@
 [tool.poetry]
-name = "avro-schema-doc-html"
-version = "0.1.0"
-description = "Generate Avro schema documentation HTML"
+name = "avdoc"
+version = "0.0.1"
+description = "CLI tool to generate HTML documentation for an Apache Avro schema"
+license = "AGPL-3.0-or-later"
 authors = ["Ben Jeffrey <mail@benjeffrey.net>"]
 readme = "README.md"
-packages = [{include = "avro_schema_doc_html"}]
+repository = "https://github.com/jeffbr13/avdoc"
+keywords = ["avro", "avro-schema"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Text Processing :: Markup :: HTML",
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 avro = "^1.11.1"
-more-itertools = "^9.0.0"
-typing-extensions = "^4.5.0"
 dominate = "^2.8.0"
 pygraphviz = "^1.11"
 
+[tool.poetry.scripts]
+avdoc = "avdoc.__main__:main"
 
 [build-system]
 requires = ["poetry-core"]
@@ -21,5 +33,5 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 ignore = ["F403", "F405"]
-# Same as Black.
+# Same line-length as black:
 line-length = 88

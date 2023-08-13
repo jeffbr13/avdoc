@@ -1,9 +1,9 @@
 avdoc
 =====
 
-Generate human-readable HTML documentation for an [Apache Avro] schema AVSC file.
+CLI tool to generate human-readable HTML documentation for an [Apache Avro] schema AVSC file.
 
-Want Apache Avro docs? 'avdoc!
+Want Avro schema docs? 'avdoc!
 
 ## Installation
 
@@ -11,12 +11,12 @@ Want Apache Avro docs? 'avdoc!
 
 ## Usage
 ```shell
-python avdoc.py tests/example.avsc > out/example.html && open out/example.html
+python -m avdoc tests/example.avsc > out/example.html && open out/example.html
 ```
 
 To provide a version ID, e.g. the current git commit:
 ```shell
-python avdoc.py --schema-version $(git rev-parse --short head) example.avsc > out/example.html
+python -m avdoc --schema-version $(git rev-parse --short head) example.avsc > out/example.html
 ```
 
 ### Requirements
@@ -25,7 +25,11 @@ Software required outside of Python package dependencies:
 - [Graphviz] for the reference graph.
 
 ## Development
-- [devenv]
+- [devenv] for development environment
+- [direnv] for automatic shell activation (optional)
+
+`devenv shell` should set up Python & Poetry with dependencies installed.
+Use `.venv/bin/python` as your Python interpreter.
 
 ### Architecture
 Not really. 
@@ -81,14 +85,14 @@ npm install @mikaello/avrodoc-plus
 node_modules/@mikaello/avrodoc-plus/bin/avrodoc-plus.js example.avsc --output out/avrodocplus.html
 ```
 
-## Why `avdoc`?
+## Why?
 
-Unfortunately the original avrodoc and forks are all
+Unfortunately the original [avrodoc] and forks are all
 in varying stages of [software rot], mostly due to NodeJS ecosystem churn. 
 Their NPM package dependencies include packages which have themselves 
 gone unmaintained or had breaking changes in following versions, 
 with CVEs piling up against the transitive dependencies.
-[avrodoc-plus] has about 10 critical CVEs in its dependencies.
+[avrodoc-plus] has about 10 critical CVEs in its dependency graph.
 This isn't necessarily an issue in itself unless you're running these
 avrodoc tools in an online capacity or on untrusted input.
 But at $WORK it was generating a lot of false-positives in automatic
@@ -99,7 +103,7 @@ requiring JS to render, when it could just be a classic HTML page.
 
 I have taken the opportunity to implement some quality-of-life
 improvements for readers.
-See [§ Design Goals](#design-goals) for more info. 
+See [§Design Goals](#design-goals) for more info. 
 
 Why the name `avdoc` specifically?
 The [Apache Software Foundation protects project name trademarks]
@@ -113,6 +117,7 @@ The [Apache Software Foundation protects project name trademarks]
 [avrodoc-plus]: https://github.com/mikaello/avrodoc-plus
 [avrodoc]: https://github.com/ept/avrodoc
 [AGPL]: https://www.gnu.org/licenses/agpl-3.0.html
+[direnv]: https://direnv.net
 [devenv]: https://devenv.sh
 [Graphviz]: https://www.graphviz.org
 [software rot]: https://en.wikipedia.org/wiki/Software_rot

@@ -2,12 +2,12 @@
 
 [[package]]
 name = "avro"
-version = "1.11.1"
+version = "1.11.2"
 description = "Avro is a serialization and RPC framework."
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "avro-1.11.1.tar.gz", hash = "sha256:f123623ecc648d0e20ce14f8ed85162140c13cc4b108865d1b2529fbfa06c008"},
+    {file = "avro-1.11.2.tar.gz", hash = "sha256:53dcd5bffccb9a72136f08d0b18771795eaf4eefb028bbaaed5f4e1787f0e268"},
 ]
 
 [package.extras]
@@ -26,17 +26,6 @@ files = [
 ]
 
 [[package]]
-name = "more-itertools"
-version = "9.0.0"
-description = "More routines for operating on iterables, beyond itertools"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "more-itertools-9.0.0.tar.gz", hash = "sha256:5a6257e40878ef0520b1803990e3e22303a41b5714006c32a3fd8304b26ea1ab"},
-    {file = "more_itertools-9.0.0-py3-none-any.whl", hash = "sha256:250e83d7e81d0c87ca6bd942e6aeab8cc9daa6096d12c5308f3f92fa5e5c1f41"},
-]
-
-[[package]]
 name = "pygraphviz"
 version = "1.11"
 description = "Python interface to Graphviz"
@@ -46,18 +35,7 @@ files = [
     {file = "pygraphviz-1.11.zip", hash = "sha256:a97eb5ced266f45053ebb1f2c6c6d29091690503e3a5c14be7f908b37b06f2d4"},
 ]
 
-[[package]]
-name = "typing-extensions"
-version = "4.5.0"
-description = "Backported and Experimental Type Hints for Python 3.7+"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "typing_extensions-4.5.0-py3-none-any.whl", hash = "sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4"},
-    {file = "typing_extensions-4.5.0.tar.gz", hash = "sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb"},
-]
-
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "ebef81bf22734d93c998bdfd95f526392bbe3fcc783d80412d8384f9d47b8c2f"
+content-hash = "d7825403b5b86951dbbd058a3f7ded303d200dc987f89d2c8ec0071ee420883d"

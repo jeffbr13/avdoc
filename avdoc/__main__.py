@@ -17,8 +17,8 @@ from dominate.tags import *
 from dominate.tags import main as dom_main
 from dominate.util import raw, text
 
+from . import __version__
 
-__version__ = "0.0.1"
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -261,7 +261,7 @@ def draw_graph(names: avro.name.Names):
     return re.sub(r'svg width="\d+pt"', 'svg width="100%"', svg_str)
 
 
-def main(avsc: Path, schema_title=None, schema_version=None):
+def avdoc(avsc: Path, schema_title=None, schema_version=None) -> str:
     avsc_contents: str = avsc.read_text(encoding="utf-8")
     names = parse(avsc_contents)
     dependency_graph_svg = draw_graph(names)
@@ -272,10 +272,11 @@ def main(avsc: Path, schema_title=None, schema_version=None):
         schema_title=schema_title,
         schema_version=schema_version,
     )
-    print(html)
+    return html
 
 
-if __name__ == "__main__":
+def main():
+    """Run as CLI app"""
     parser = argparse.ArgumentParser(
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -284,4 +285,9 @@ if __name__ == "__main__":
     parser.add_argument("--schema-title", default="")
     parser.add_argument("--schema-version", default="")
     args = parser.parse_args()
-    main(args.avsc, args.schema_title, args.schema_version)
+    html = avdoc(args.avsc, args.schema_title, args.schema_version)
+    print(html)
+
+
+if __name__ == "__main__":
+    main()
