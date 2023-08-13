@@ -16,12 +16,12 @@ pip install --upgrade avdoc
 ## Usage
 
 ```shell
-python -m avdoc tests/example.avsc > out/example.html && open out/example.html
+[python -m] avdoc tests/example.avsc > out/example.html && open out/example.html
 ```
 
 To provide a version ID, e.g. the current git commit:
 ```shell
-python -m avdoc --schema-version $(git rev-parse --short head) example.avsc > out/example.html
+[python -m] avdoc --schema-version $(git rev-parse --short head) example.avsc > out/example.html
 ```
 
 `$ avdoc --help`
