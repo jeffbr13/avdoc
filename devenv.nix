@@ -36,6 +36,7 @@
     shfmt.enable = true; # shell formatter
     shellcheck.enable = true; # shell linter
     typos.enable = true; # source code spellchecker
+    mdsh.enable = true; # documentation generator
   };
   # https://devenv.sh/processes/
   # processes.ping.exec = "ping example.com";
