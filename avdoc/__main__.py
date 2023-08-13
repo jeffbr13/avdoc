@@ -3,6 +3,7 @@
 import argparse
 import json
 import logging
+import re
 from datetime import datetime
 from datetime import timezone
 from io import BytesIO
@@ -254,10 +255,8 @@ def draw_graph(names: avro.name.Names):
     buffer = BytesIO()
     G.draw(buffer, format="svg")  # NOTE: looks like path can be a file
     buffer.seek(0)
-    # replace fixed width with relative width
-    import re
-
     svg_str = buffer.read().decode("utf-8")
+    # replace fixed width with relative width
     return re.sub(r'svg width="\d+pt"', 'svg width="100%"', svg_str)
 
 
