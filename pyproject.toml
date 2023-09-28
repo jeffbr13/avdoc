@@ -24,6 +24,7 @@ python = "^3.10"
 avro = "^1.11.1"
 dominate = "^2.8.0"
 pygraphviz = "^1.11"
+mistune = "^3.0.1"
 
 [tool.poetry.scripts]
 avdoc = "avdoc.__main__:main"

@@ -2,7 +2,7 @@
   "type": "record",
   "namespace": "com.example",
   "name": "User",
-  "doc": "An example Avro schema for a registered user on our website.",
+  "doc": "An example Avro schema for a registered user on our website. An example for [avdoc](https://pypi.org/project/avdoc/).",
   "fields": [
     {
       "name": "id",
@@ -10,7 +10,7 @@
         "type": "string",
         "logicalType": "uuid"
       },
-      "doc": "The unique ID of the user."
+      "doc": "The *unique* ID of the user."
     },
     {
       "name": "username",
