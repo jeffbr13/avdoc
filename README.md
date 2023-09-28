@@ -34,7 +34,7 @@ usage: avdoc [-h] [--schema-title SCHEMA_TITLE]
              [--schema-version SCHEMA_VERSION]
              avsc
 
-Produce HTML documentation for an Avro schema.
+CLI tool to generate HTML documentation for an Apache Avro schema
 
 positional arguments:
   avsc
@@ -44,6 +44,28 @@ options:
   --schema-title SCHEMA_TITLE
   --schema-version SCHEMA_VERSION
 ```
+
+## Features
+- [x] graph/diagram of which record schemas reference each other
+- [x] Markdown support in `"doc"` strings
+- [ ] supports all [complex Avro types][]
+  - [x] record
+  - [x] enum
+  - [x] array
+  - [x] union
+  - [ ] error
+  - [ ] map
+  - [ ] request
+
+### Design Goals
+The output should:
+- be well-formatted semantic HTML.
+- be legible in basic browsers without styling.
+- aid understanding of the underlying schema.
+- be a single static file for sharing without dependencies.
+- be linkable to reference specific schemas and fields.
+
+
 
 ## Development
 - [devenv] for development environment
@@ -79,15 +101,6 @@ This code is purpose-oriented.
 The output is opinionated, but not much time has been spent on the code
 past getting it working for my own needs.
 It's not intended to be exemplary of anything in particular.
-
-
-### Design Goals
-The output should:
-- be well-formatted semantic HTML.
-- be legible in basic browsers without styling. 
-- aid understanding of the underlying schema.
-- be a single static file for sharing without dependencies.
-- be linkable to reference specific schemas and fields.
 
 
 ## Maintenance
@@ -153,6 +166,7 @@ The [Apache Software Foundation protects project name trademarks]
 
 [//]: # (Links)
 [Apache Avro]: https://avro.apache.org
+[complex Avro types]: https://avro.apache.org/docs/1.11.1/specification/#complex-types-1
 [avrodoc-plus]: https://github.com/mikaello/avrodoc-plus
 [avrodoc]: https://github.com/ept/avrodoc
 [AGPL]: https://www.gnu.org/licenses/agpl-3.0.html
