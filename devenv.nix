@@ -22,7 +22,14 @@
   # languages.nix.enable = true;
   languages.python = {
     enable = true;
-    poetry.enable = true;
+    poetry = {
+      enable = true;
+      activate.enable = true;
+      install = {
+        enable = true;
+        installRootPackage = true;
+      };
+    };
   };
 
   languages.javascript.enable = true;
