@@ -95,7 +95,7 @@ def field_type_html(field_schema: avro.schema.Schema):
                 text("[")
                 for i, s in enumerate(schemas):
                     if i != 0:
-                        text("|")
+                        text(" | ")
                     field_type_html(s)
                 text("]")
             case avro.schema.LogicalSchema(logical_type=logical_type):
