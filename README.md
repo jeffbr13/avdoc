@@ -47,6 +47,7 @@ options:
 
 ## Features
 - [x] graph/diagram of which record schemas reference each other
+  - [ ] reference graph for every complex (record) type
 - [x] Markdown support in `"doc"` strings
 - [ ] supports all [complex Avro types][]
   - [x] record
