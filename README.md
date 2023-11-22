@@ -5,6 +5,8 @@ CLI tool to generate human-readable HTML documentation for an [Apache Avro] sche
 
 Want Avro schema docs? 'avdoc!
 
+![screenshot showing avdoc](screenshot.png)
+
 ## Installation
 
 ### Requirements
