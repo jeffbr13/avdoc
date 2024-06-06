@@ -251,23 +251,31 @@ def generate_html(
     return document.render()
 
 
-def get_edges(schema: avro.schema.Schema):
+def get_edges(schema: avro.schema.Schema) -> list[tuple[str, str, str, str]]:
+    """Get edges of format (from, to, edge-label, edge-href)"""
     edges = []
     match schema:
         case avro.schema.RecordSchema(fullname=name, fields=fields):
             for field in fields:
                 match field.type:
-                    case avro.schema.NamedSchema(fullname=field_name):
-                        edges.append((name, field_name))
+                    case avro.schema.NamedSchema(fullname=field_schema_name):
+                        edges.append(
+                            (
+                                name,
+                                field_schema_name,
+                                field.name,
+                                f"#{name}.{field.name}",
+                            )
+                        )
                     case avro.schema.ArraySchema(items=items):
-                        edges.append((name, items.fullname)) if isinstance(
-                            items, avro.schema.NamedSchema
-                        ) else ...
+                        edges.append(
+                            (name, items.fullname, field.name, f"#{name}.{field.name}")
+                        ) if isinstance(items, avro.schema.NamedSchema) else ...
                     case avro.schema.UnionSchema(schemas=field_schemas):
                         for s in field_schemas:
-                            edges.append((name, s.fullname)) if isinstance(
-                                s, avro.schema.NamedSchema
-                            ) else ...
+                            edges.append(
+                                (name, s.fullname, field.name, f"#{name}.{field.name}")
+                            ) if isinstance(s, avro.schema.NamedSchema) else ...
     return edges
 
 
@@ -280,7 +288,7 @@ def draw_graph(names: avro.name.Names):
     for v in vertices:
         G.add_node(v, href=f"#{v}")
     for e in edges:
-        G.add_edge(*e)
+        G.add_edge(e[0], e[1], label=e[2], href=e[3])
     G.layout("dot")
     buffer = BytesIO()
     G.draw(buffer, format="svg")  # NOTE: looks like path can be a file
