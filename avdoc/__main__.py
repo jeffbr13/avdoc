@@ -19,6 +19,7 @@ import argparse
 import json
 import logging
 import re
+import typing
 from datetime import datetime
 from datetime import timezone
 from io import BytesIO
@@ -251,44 +252,69 @@ def generate_html(
     return document.render()
 
 
-def get_edges(schema: avro.schema.Schema) -> list[tuple[str, str, str, str]]:
-    """Get edges of format (from, to, edge-label, edge-href)"""
-    edges = []
+class DependencyGraphEdge(typing.NamedTuple):
+    from_label: str
+    to_label: str
+    edge_label: str
+    edge_href: str
+
+
+def get_dependency_graph(schema: avro.schema.Schema) -> list[DependencyGraphEdge]:
+    """Get edges of dependency graph (from, to, edge-label)"""
+    edges: list[DependencyGraphEdge] = []
     match schema:
         case avro.schema.RecordSchema(fullname=name, fields=fields):
             for field in fields:
                 match field.type:
                     case avro.schema.NamedSchema(fullname=field_schema_name):
                         edges.append(
-                            (
-                                name,
-                                field_schema_name,
-                                field.name,
-                                f"#{name}.{field.name}",
+                            DependencyGraphEdge(
+                                from_label=name,
+                                to_label=field_schema_name,
+                                edge_label=field.name,
+                                edge_href="#{name}.{field.name}",
                             )
                         )
                     case avro.schema.ArraySchema(items=items):
-                        edges.append(
-                            (name, items.fullname, field.name, f"#{name}.{field.name}")
-                        ) if isinstance(items, avro.schema.NamedSchema) else ...
+                        (
+                            edges.append(
+                                DependencyGraphEdge(
+                                    from_label=name,
+                                    to_label=items.fullname,
+                                    edge_label=field.name,
+                                    edge_href=f"#{name}.{field.name}",
+                                )
+                            )
+                            if isinstance(items, avro.schema.NamedSchema)
+                            else ...
+                        )
                     case avro.schema.UnionSchema(schemas=field_schemas):
                         for s in field_schemas:
-                            edges.append(
-                                (name, s.fullname, field.name, f"#{name}.{field.name}")
-                            ) if isinstance(s, avro.schema.NamedSchema) else ...
+                            (
+                                edges.append(
+                                    DependencyGraphEdge(
+                                        from_label=name,
+                                        to_label=s.fullname,
+                                        edge_label=field.name,
+                                        edge_href=f"#{name}.{field.name}",
+                                    )
+                                )
+                                if isinstance(s, avro.schema.NamedSchema)
+                                else ...
+                            )
     return edges
 
 
 def draw_graph(names: avro.name.Names):
     vertices = names.names.keys()
-    edges = []
+    edges: list[DependencyGraphEdge] = []
     for name, schema in names.names.items():
-        edges.extend(get_edges(schema))
+        edges.extend(get_dependency_graph(schema))
     G = pygraphviz.AGraph(directed=True)
     for v in vertices:
         G.add_node(v, href=f"#{v}")
     for e in edges:
-        G.add_edge(e[0], e[1], label=e[2], href=e[3])
+        G.add_edge(e.from_label, e.to_label, label=e.edge_label, href=e.edge_href)
     G.layout("dot")
     buffer = BytesIO()
     G.draw(buffer, format="svg")  # NOTE: looks like path can be a file
