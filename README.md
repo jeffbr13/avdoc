@@ -31,6 +31,7 @@ To provide a version ID, e.g. the current git commit:
 ```
 
 `$ avdoc --help`
+
 ```
 usage: avdoc [-h] [--schema-title SCHEMA_TITLE]
              [--schema-version SCHEMA_VERSION]
@@ -95,11 +96,11 @@ poetry publish --build
 ```
 
 ### Architecture
-Not much to speak of. 
+Not much to speak of.
 
 `avdoc` is a couple of hundred lines of Python script
 generating static HTML, with a bit of string munging to get component outputs
-into the final HTML output page. 
+into the final HTML output page.
 This code is purpose-oriented.
 The output is opinionated, but not much time has been spent on the code
 past getting it working for my own needs.
@@ -107,7 +108,7 @@ It's not intended to be exemplary of anything in particular.
 
 
 ## Maintenance
-I probably won't pay too much attention to `avdoc` maintenance 
+I probably won't pay too much attention to `avdoc` maintenance
 once it's suitable for my own needs.
 I'd like to try to ensure that dependencies are kept up to date.
 
@@ -123,8 +124,8 @@ have access to your modifications.
 `avdoc` is released as copyleft software.
 If you modify `avdoc` then you must make changes available to your users.
 
-If the AGPL license is an issue, and you want to relicense `avdoc` privately, 
-then reach out to discuss pricing. 
+If the AGPL license is an issue, and you want to relicense `avdoc` privately,
+then reach out to discuss pricing.
 
 ## Prior Art
 
@@ -142,9 +143,9 @@ node_modules/@mikaello/avrodoc-plus/bin/avrodoc-plus.js example.avsc --output ou
 ## Why?
 
 Unfortunately the original [avrodoc] and forks are all
-in varying stages of [software decay], mostly due to NodeJS ecosystem churn. 
-Their NPM package dependencies include packages which have themselves 
-gone unmaintained or had breaking changes in following versions, 
+in varying stages of [software decay], mostly due to NodeJS ecosystem churn.
+Their NPM package dependencies include packages which have themselves
+gone unmaintained or had breaking changes in following versions,
 with CVEs piling up against the transitive dependencies.
 [avrodoc-plus] has about 10 critical CVEs in its dependency graph.
 This isn't necessarily an issue in itself unless you're running these
@@ -152,12 +153,12 @@ avrodoc tools in an online capacity or on untrusted input.
 But at $WORK it was generating a lot of false-positives in automatic
 [SBOM] security scanners which had to be explained to infosec specialists.
 
-The HTML output from the avrodoc tools is also rather dynamic, 
-requiring JS to render, when it could just be a classic HTML page. 
+The HTML output from the avrodoc tools is also rather dynamic,
+requiring JS to render, when it could just be a classic HTML page.
 
 I have taken the opportunity to implement some quality-of-life
 improvements for readers.
-See [§Design Goals](#design-goals) for more info. 
+See [§Design Goals](#design-goals) for more info.
 
 Why the name `avdoc` specifically?
 The [Apache Software Foundation protects project name trademarks]
