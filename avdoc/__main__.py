@@ -254,7 +254,9 @@ def generate_html(
 
 class DependencyGraphEdge(typing.NamedTuple):
     from_label: str
+    from_href: str
     to_label: str
+    to_href: str
     edge_label: str
     edge_href: str
 
@@ -263,16 +265,20 @@ def get_dependency_graph(schema: avro.schema.Schema) -> list[DependencyGraphEdge
     """Get edges of dependency graph (from, to, edge-label)"""
     edges: list[DependencyGraphEdge] = []
     match schema:
-        case avro.schema.RecordSchema(fullname=name, fields=fields):
+        case avro.schema.RecordSchema(name=name, fullname=fullname, fields=fields):
             for field in fields:
                 match field.type:
-                    case avro.schema.NamedSchema(fullname=field_schema_name):
+                    case avro.schema.NamedSchema(
+                        name=field_name, fullname=field_fullname
+                    ):
                         edges.append(
                             DependencyGraphEdge(
                                 from_label=name,
-                                to_label=field_schema_name,
+                                from_href=f"#{fullname}",
+                                to_label=field_name,
+                                to_href=f"#{field_fullname}",
                                 edge_label=field.name,
-                                edge_href="#{name}.{field.name}",
+                                edge_href=f"#{fullname}.{field.name}",
                             )
                         )
                     case avro.schema.ArraySchema(items=items):
@@ -280,9 +286,11 @@ def get_dependency_graph(schema: avro.schema.Schema) -> list[DependencyGraphEdge
                             edges.append(
                                 DependencyGraphEdge(
                                     from_label=name,
-                                    to_label=items.fullname,
+                                    from_href=f"#{fullname}",
+                                    to_label=items.name,
+                                    to_href=f"#{items.fullname}",
                                     edge_label=field.name,
-                                    edge_href=f"#{name}.{field.name}",
+                                    edge_href=f"#{fullname}.{field.name}",
                                 )
                             )
                             if isinstance(items, avro.schema.NamedSchema)
@@ -294,9 +302,11 @@ def get_dependency_graph(schema: avro.schema.Schema) -> list[DependencyGraphEdge
                                 edges.append(
                                     DependencyGraphEdge(
                                         from_label=name,
-                                        to_label=s.fullname,
+                                        from_href=f"#{fullname}",
+                                        to_label=s.name,
+                                        to_href=f"#{s.fullname}",
                                         edge_label=field.name,
-                                        edge_href=f"#{name}.{field.name}",
+                                        edge_href=f"#{fullname}.{field.name}",
                                     )
                                 )
                                 if isinstance(s, avro.schema.NamedSchema)
@@ -306,15 +316,20 @@ def get_dependency_graph(schema: avro.schema.Schema) -> list[DependencyGraphEdge
 
 
 def draw_graph(names: avro.name.Names):
-    vertices = names.names.keys()
     edges: list[DependencyGraphEdge] = []
     for name, schema in names.names.items():
         edges.extend(get_dependency_graph(schema))
     G = pygraphviz.AGraph(directed=True)
-    for v in vertices:
-        G.add_node(v, href=f"#{v}")
     for e in edges:
-        G.add_edge(e.from_label, e.to_label, label=e.edge_label, href=e.edge_href)
+        G.add_node(e.from_label, id=e.from_href, href=e.from_href)
+        G.add_node(e.to_label, id=e.to_href, href=e.to_href)
+        G.add_edge(
+            e.from_label,
+            e.to_label,
+            label=e.edge_label,
+            id=e.edge_href,
+            href=e.edge_href,
+        )
     G.layout("dot")
     buffer = BytesIO()
     G.draw(buffer, format="svg")  # NOTE: looks like path can be a file
