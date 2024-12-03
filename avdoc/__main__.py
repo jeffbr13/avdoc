@@ -142,9 +142,11 @@ def named_schema_html(schema: avro.schema.NamedSchema) -> dom_tag:
     _section = section(id=schema.fullname, _class="schema")
     with _section:
         with h2():
-            a(schema.fullname, href=f"#{schema.fullname}")
+            a(schema.name, href=f"#{schema.fullname}")
             small(a(f"{schema.type}", href=avro_type_specification_url(schema.type)))
 
+        h3("namespace")
+        p(schema.namespace)
         h3("doc")
         p(schema_docstring, _class="docstring")
 
