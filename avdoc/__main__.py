@@ -146,7 +146,7 @@ def named_schema_html(schema: avro.schema.NamedSchema) -> dom_tag:
             small(a(f"{schema.type}", href=avro_type_specification_url(schema.type)))
 
         h3("namespace")
-        p(schema.namespace)
+        p(schema.namespace if schema.namespace else i("missing"), _class="namespace")
         h3("doc")
         p(schema_docstring, _class="docstring")
 
