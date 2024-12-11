@@ -1,5 +1,5 @@
 default:
-    {just_executable()}} --list
+    {just_executable()} --list
 
 test:
     python -m pytest
