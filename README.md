@@ -90,10 +90,10 @@ bumpversion major|minor|patch
 Run `mdsh`.
 
 #### Publish Python package to PyPI
-Run `uv publish` and use `__token__` as username & [PyPI token] as password:
+Run `just publish` and use `__token__` as username & [PyPI token] as password:
 
 ```shell
-uv build && uv publish
+just publish
 ```
 
 ### Architecture
