@@ -73,10 +73,9 @@ The output should:
 
 ## Development
 - [devenv] for development environment
-- [direnv] for automatic shell activation (optional)
 
-`devenv shell` should set up Python & Poetry with dependencies installed.
-Use `.venv/bin/python` as your Python interpreter.
+`devenv shell` sets up Python with dependencies installed.
+This can be auto-activated with [devenv auto-activation](https://devenv.sh/auto-activation/).
 
 ### Publishing
 

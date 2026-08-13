@@ -1,3 +1,9 @@
 inputs:
   nixpkgs:
-    url: github:NixOS/nixpkgs/nixpkgs-unstable
+    url: github:cachix/devenv-nixpkgs/rolling
+  git-hooks:
+    url: github:cachix/git-hooks.nix
+    # https://devenv.sh/inputs/#following-inputs
+    inputs:
+      nixpkgs:
+        follows: nixpkgs

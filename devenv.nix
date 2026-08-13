@@ -35,15 +35,19 @@
   languages.javascript.enable = true;
 
   # https://devenv.sh/pre-commit-hooks/
-  pre-commit.hooks = {
-    alejandra.enable = true; # nix formatter
-    statix.enable = true; # nix linter
-    black.enable = true; # python formatter
-    ruff.enable = true; # python linter
-    shfmt.enable = true; # shell formatter
-    shellcheck.enable = true; # shell linter
-    typos.enable = true; # source code spellchecker
-    mdsh.enable = true; # documentation generator
+  git-hooks = {
+    enable = true;
+    package = pkgs.prek;
+    hooks = {
+      alejandra.enable = true; # nix formatter
+      statix.enable = true; # nix linter
+      black.enable = true; # python formatter
+      ruff.enable = true; # python linter
+      shfmt.enable = true; # shell formatter
+      shellcheck.enable = true; # shell linter
+      typos.enable = true; # source code spellchecker
+      mdsh.enable = true; # documentation generator
+    };
   };
   # https://devenv.sh/processes/
   # processes.ping.exec = "ping example.com";
