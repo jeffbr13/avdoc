@@ -21,9 +21,9 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "avro", specifier = ">=1.12.1,<2" },
+    { name = "avro", specifier = ">=1.12.0,<2" },
     { name = "dominate", specifier = ">=2.8.0,<3" },
-    { name = "mistune", specifier = ">=3.3.4,<4" },
+    { name = "mistune", specifier = ">=3.3.0,<4" },
     { name = "pygraphviz", specifier = ">=1.11,<2" },
 ]
 
