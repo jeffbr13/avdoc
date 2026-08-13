@@ -3,31 +3,37 @@
   #  env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [
-    pkgs.black
-    pkgs.ruff
-    pkgs.graphviz
-    pkgs.mdsh
+  packages = with pkgs; [
+    graphviz
+    mdsh
   ];
+
+  # https://devenv.sh/tests/
+  enterTest = ''
+    avdoc --help
+  '';
 
   # https://devenv.sh/scripts/
   #  scripts.hello.exec = "echo hello from $GREET";
 
-  #  enterShell = ''
-  #    hello
-  #    git --version
-  #  '';
+  # https://devenv.sh/tasks/#entershell-entertest
+  enterShell = ''
+    # Create a symlink to the Python virtual environment for IDE compatibility
+    if [ ! -L "$DEVENV_ROOT/venv" ]; then
+        ln -s "$DEVENV_STATE/venv/" "$DEVENV_ROOT/venv"
+    fi
+  '';
 
   # https://devenv.sh/languages/
   # languages.nix.enable = true;
   languages.python = {
     enable = true;
-    poetry = {
+    venv.enable = true;
+    uv = {
       enable = true;
-      activate.enable = true;
-      install = {
+      sync = {
         enable = true;
-        installRootPackage = true;
+        allGroups = true;
       };
     };
   };
@@ -41,8 +47,8 @@
     hooks = {
       alejandra.enable = true; # nix formatter
       statix.enable = true; # nix linter
-      black.enable = true; # python formatter
       ruff.enable = true; # python linter
+      ruff-format.enable = true; # python formatter
       shfmt.enable = true; # shell formatter
       shellcheck.enable = true; # shell linter
       typos.enable = true; # source code spellchecker
