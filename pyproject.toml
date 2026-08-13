@@ -1,6 +1,6 @@
 [project]
 name = "avdoc"
-version = "0.6.3"
+version = "0.6.4"
 description = "CLI tool to generate HTML documentation for an Apache Avro schema"
 authors = [{ name = "Ben Jeffrey", email = "mail@benjeffrey.net" }]
 requires-python = ">=3.11,<4"
