@@ -33,7 +33,7 @@ To provide a version ID, e.g. the current git commit:
 `$ avdoc --help`
 
 ```
-usage: avdoc [-h] [--schema-title SCHEMA_TITLE]
+usage: avdoc [-h] [--version] [--schema-title SCHEMA_TITLE]
              [--schema-version SCHEMA_VERSION]
              avsc
 
@@ -44,6 +44,7 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
+  --version             show program's version number and exit
   --schema-title SCHEMA_TITLE
   --schema-version SCHEMA_VERSION
 ```
@@ -89,9 +90,10 @@ bumpversion major|minor|patch
 Run `mdsh`.
 
 #### Publish Python package to PyPI
-[Configure Poetry credentials] with [PyPI token] and run:
+Run `uv publish` and use [PyPI token] as password:
+
 ```shell
-poetry publish --build
+uv publish --username=__token__
 ```
 
 ### Architecture
@@ -180,6 +182,5 @@ The [Apache Software Foundation protects project name trademarks]
 [SBOM]: https://en.wikipedia.org/wiki/Software_supply_chain
 [kcat naming issue]: https://github.com/edenhill/kcat#what-happened-to-kafkacat
 [Apache Software Foundation protects project name trademarks]: https://www.apache.org/foundation/marks/faq/#products
-[Configure Poetry credentials]: https://python-poetry.org/docs/repositories/#configuring-credentials
 [PyPI token]: https://pypi.org/help/#apitoken
 [`avdoc` package on PyPI]: https://pypi.org/project/avdoc/
