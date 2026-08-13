@@ -93,7 +93,7 @@ Run `mdsh`.
 Run `uv publish` and use [PyPI token] as password:
 
 ```shell
-uv publish --username=__token__
+uv build && uv publish --username=__token__
 ```
 
 ### Architecture
