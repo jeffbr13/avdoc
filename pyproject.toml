@@ -26,7 +26,7 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-    "avro>=1.11.1,<2",
+    "avro>=1.12.1,<2",
     "dominate>=2.8.0,<3",
     "pygraphviz>=1.11,<2",
     "mistune>=3.3.4,<4",

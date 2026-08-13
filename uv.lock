@@ -4,7 +4,7 @@ requires-python = ">=3.11, <4"
 
 [[package]]
 name = "avdoc"
-version = "0.5.1"
+version = "0.6.3"
 source = { editable = "." }
 dependencies = [
     { name = "avro" },
@@ -21,7 +21,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "avro", specifier = ">=1.11.1,<2" },
+    { name = "avro", specifier = ">=1.12.1,<2" },
     { name = "dominate", specifier = ">=2.8.0,<3" },
     { name = "mistune", specifier = ">=3.3.4,<4" },
     { name = "pygraphviz", specifier = ">=1.11,<2" },
@@ -35,9 +35,12 @@ dev = [
 
 [[package]]
 name = "avro"
-version = "1.11.3"
+version = "1.12.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/58/5b/41d2dab437adbad4077acba55b05064c5eb0aea8e77145a0379564d32950/avro-1.11.3.tar.gz", hash = "sha256:3393bb5139f9cf0791d205756ce1e39a5b58586af5b153d6a3b5a199610e9d17", size = 90621, upload-time = "2023-09-25T16:44:25.802Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/60/00/af1eec633637e12d0945a97f05a429eed83ac45865af60cb453db4689d95/avro-1.12.1.tar.gz", hash = "sha256:c5b8dd2dd4c10816f0dc127cc29cfd43b5e405cf7e6840e89460a024bf3d098d", size = 91115, upload-time = "2025-10-15T21:05:33.859Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f0/2b/3d5f41d5b46246216fa62d1a0a6813c74ba8b0ef990644b6bd3cde82d042/avro-1.12.1-py2.py3-none-any.whl", hash = "sha256:970475dd6457924533966fe761be607c759d5a48390cc8fbed472f7c9a8868f2", size = 124250, upload-time = "2025-10-15T21:05:32.815Z" },
+]
 
 [[package]]
 name = "bump2version"
