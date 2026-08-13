@@ -29,7 +29,7 @@ dependencies = [
     "avro>=1.11.1,<2",
     "dominate>=2.8.0,<3",
     "pygraphviz>=1.11,<2",
-    "mistune>=3.0.1,<4",
+    "mistune>=3.3.4,<4",
 ]
 
 [project.urls]
