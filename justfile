@@ -2,7 +2,9 @@ default:
     {{just_executable()}} --list
 
 test:
-    pytest
+    devenv test
+
+preview:
     avdoc tests/example.avsc > out/example.html && open out/example.html
 
 clean:

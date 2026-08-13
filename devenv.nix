@@ -11,6 +11,7 @@
   # https://devenv.sh/tests/
   enterTest = ''
     avdoc --help
+    pytest
   '';
 
   # https://devenv.sh/scripts/

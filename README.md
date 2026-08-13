@@ -1,6 +1,8 @@
 avdoc
 =====
 
+[![Test](https://github.com/jeffbr13/avdoc/actions/workflows/test.yml/badge.svg)](https://github.com/jeffbr13/avdoc/actions/workflows/test.yml)
+
 CLI tool to generate human-readable HTML documentation for an [Apache Avro] schema AVSC file.
 
 Want Avro schema docs? 'avdoc!
