@@ -13,4 +13,9 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-__version__ = "0.5.1"
+from importlib.metadata import PackageNotFoundError, version
+
+try:
+    __version__ = version("avdoc")
+except PackageNotFoundError:  # not installed, e.g. running from a source tree
+    __version__ = "0.0.0+unknown"

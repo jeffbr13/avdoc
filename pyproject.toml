@@ -3,7 +3,7 @@ name = "avdoc"
 version = "0.5.1"
 description = "CLI tool to generate HTML documentation for an Apache Avro schema"
 authors = [{ name = "Ben Jeffrey", email = "mail@benjeffrey.net" }]
-requires-python = ">=3.10,<4"
+requires-python = ">=3.11,<4"
 readme = "README.md"
 license = "AGPL-3.0-or-later"
 keywords = [
@@ -20,7 +20,6 @@ classifiers = [
     "Topic :: Software Development",
     "Topic :: Software Development :: Documentation",
     "Topic :: Text Processing :: Markup :: HTML",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -40,7 +39,10 @@ Repository = "https://github.com/jeffbr13/avdoc"
 avdoc = "avdoc.__main__:main"
 
 [dependency-groups]
-dev = ["bump2version>=1.0.1,<2"]
+dev = [
+    "bump2version>=1.0.1,<2",
+    "pytest>=9.1.1",
+]
 
 [tool.uv]
 default-groups = "all"

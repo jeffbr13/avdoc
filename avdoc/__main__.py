@@ -20,7 +20,7 @@ import json
 import logging
 import re
 import typing
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from io import BytesIO
 from pathlib import Path
 
@@ -230,7 +230,7 @@ def generate_html(
         for schema in names.names.values():
             named_schema_html(schema)
         with footer():
-            now = datetime.now(tz=timezone.utc)
+            now = datetime.now(tz=UTC)
             p("Schema filename: ", code(schema_filename), id="schema-filename")
             if schema_version:
                 p("Schema version: ", code(schema_version), id="schema-version")
@@ -356,6 +356,7 @@ def main():
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
+    parser.add_argument("--version", action="version", version=__version__)
     parser.add_argument("avsc", type=Path)
     parser.add_argument("--schema-title", default="")
     parser.add_argument("--schema-version", default="")
