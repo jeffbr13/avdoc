@@ -34,6 +34,9 @@
   languages.python = {
     enable = true;
     venv.enable = true;
+    # The pygraphviz manylinux wheel dynamically links libexpat, libX11 and friends,
+    # which are absent from the Nix environment unless these shims are provided.
+    manylinux.enable = pkgs.stdenv.isLinux;
     uv = {
       enable = true;
       sync = {
