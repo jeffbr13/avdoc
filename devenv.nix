@@ -17,6 +17,10 @@
   # https://devenv.sh/scripts/
   #  scripts.hello.exec = "echo hello from $GREET";
 
+  # https://devenv.sh/tasks/
+  # The mdsh hook shells out to `avdoc`, so the venv must be synced first.
+  tasks."devenv:git-hooks:run".after = ["devenv:python:uv"];
+
   # https://devenv.sh/tasks/#entershell-entertest
   enterShell = ''
     # Create a symlink to the Python virtual environment for IDE compatibility
